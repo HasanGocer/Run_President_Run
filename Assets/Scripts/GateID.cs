@@ -38,11 +38,14 @@ public class GateID : MonoBehaviour
 
     private void PopulationSelection()
     {
-
+        PopulationBar.Instance.BarUpdate(100, PopulationBar.Instance.populationCount, 5);
+        PointText.Instance.CallRedText(gameObject, 5);
     }
     private void MoneySelection()
     {
-        GameManager.Instance.addedMoney += GateManager.Instance.moneyGatePrice;
+        int price = GateManager.Instance.moneyGatePrice;
+        GameManager.Instance.addedMoney += price;
+        PointText.Instance.CallGreenText(gameObject, price);
     }
     private void FlagSelect()
     {
