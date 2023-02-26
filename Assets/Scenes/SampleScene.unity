@@ -13881,7 +13881,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 0
+  m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -14536,10 +14536,10 @@ RectTransform:
   m_Father: {fileID: 7785779563522009067}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 843}
-  m_SizeDelta: {x: -660, y: -2100}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -230.1}
+  m_SizeDelta: {x: 884.69, y: 98}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &7785779564255771751
 GameObject:

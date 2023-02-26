@@ -51,6 +51,7 @@ public class GateID : MonoBehaviour
     {
         GameManager gameManager = GameManager.Instance;
 
+        PopulationBar.Instance.BarOpen();
         if (gateCount == 0) gameManager.flagStat = GameManager.FlagStat.republic;
         else if (gateCount == 1) gameManager.flagStat = GameManager.FlagStat.democratic;
     }
