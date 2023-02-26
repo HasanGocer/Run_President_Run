@@ -16,7 +16,8 @@ public class PopulationBar : MonoSingleton<PopulationBar>
     public void BarUpdate(int max, int count, int down)
     {
         float nowBar = (float)count / (float)max;
-        float afterBar = ((float)count - (float)down) / (float)max;
+        float afterBar = ((float)count + (float)down) / (float)max;
+        populationCount += down;
         if (afterBar > 1) afterBar = 1;
         StartCoroutine(BarUpdateEnum(nowBar, afterBar));
     }

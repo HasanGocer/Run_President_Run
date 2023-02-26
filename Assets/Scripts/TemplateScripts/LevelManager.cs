@@ -7,7 +7,7 @@ public class LevelManager : MonoSingleton<LevelManager>
     [Header("Main_Field")]
     [Space(10)]
 
-    [SerializeField] int freeCount;
+    int freeCount;
 
     public void LevelCheck()
     {

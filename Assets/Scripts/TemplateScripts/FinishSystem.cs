@@ -7,11 +7,10 @@ public class FinishSystem : MonoSingleton<FinishSystem>
     [Header("Finish_Field")]
     [Space(10)]
 
-    public int deadWalkerCount = 0;
+    int freeCount;
 
     public void FinishCheck()
     {
-        deadWalkerCount++;
         if (GameManager.Instance.gameStat == GameManager.GameStat.start)
             FinishTime();
     }

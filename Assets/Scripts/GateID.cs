@@ -27,7 +27,7 @@ public class GateID : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("player") && !isTouch && !broGateID.isTouch)
+        if (other.CompareTag("Player") && !isTouch && !broGateID.isTouch)
         {
             isTouch = true;
             if (gateSelectStat == GateSelectStat.flag) FlagSelect();
