@@ -14,10 +14,17 @@ public class GameManager : MonoSingleton<GameManager>
         finish = 3
     }
 
+    public enum FlagStat
+    {
+        republic = 0,
+        democratic = 1
+    }
+
 
     [Header("Game_Main_Field")]
     [Space(10)]
 
+    public FlagStat flagStat;
     public GameStat gameStat;
     public int addedMoney;
     public int level;

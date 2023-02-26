@@ -29,8 +29,7 @@ public class PlayerController : MonoBehaviour
     public void Move()
     {
         AutoMoveForward();
-
-
+        LeftRightTouchMove();
         BoundaryCheck();
     }
 
@@ -44,11 +43,8 @@ public class PlayerController : MonoBehaviour
 
             switch (touch.phase)
             {
-
                 case UnityEngine.TouchPhase.Moved:
-
                     gameObject.transform.position = new Vector3((touch.position.x / Camera.main.pixelWidth) * (xBound * 2), gameObject.transform.position.y, gameObject.transform.position.z);
-
                     break;
             }
         }
