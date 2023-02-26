@@ -256,7 +256,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 403959001}
-  distance: {x: 0, y: 10, z: -15}
+  distance: {x: 0, y: 5, z: -15}
   time: 3
 --- !u!82 &330585549
 AudioSource:
@@ -1630,7 +1630,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e1ec3805bc1d064d9c457a3a0942312, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Verticalspeed: 10
+  Verticalspeed: 35
   horizontalSpeed: 0
   xBound: 4.3
 --- !u!114 &411213689

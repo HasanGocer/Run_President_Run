@@ -66,7 +66,6 @@ public class Buttons : MonoSingleton<Buttons>
         _globalPanel.SetActive(true);
         startPanel.SetActive(true);
 
-        GameManager.Instance.gameStat = GameManager.GameStat.start;
     }
     public IEnumerator NoThanxOnActive()
     {
@@ -120,7 +119,6 @@ public class Buttons : MonoSingleton<Buttons>
         GameManager.Instance.gameStat = GameManager.GameStat.start;
         startPanel.SetActive(false);
 
-        MarketSystem.Instance.GameStart();
     }
     private IEnumerator WinButton()
     {
