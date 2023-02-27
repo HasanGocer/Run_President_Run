@@ -66,6 +66,7 @@ public class Buttons : MonoSingleton<Buttons>
         _globalPanel.SetActive(true);
         startPanel.SetActive(true);
 
+        AnimController.Instance.CallIdleAnim();
     }
     public IEnumerator NoThanxOnActive()
     {
@@ -118,7 +119,7 @@ public class Buttons : MonoSingleton<Buttons>
     {
         GameManager.Instance.gameStat = GameManager.GameStat.start;
         startPanel.SetActive(false);
-
+        AnimController.Instance.ChoiseWalkType();
     }
     private IEnumerator WinButton()
     {
