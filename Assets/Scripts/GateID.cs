@@ -40,30 +40,30 @@ public class GateID : MonoBehaviour
         {
             isTouch = true;
             if (gateSelectStat == GateSelectStat.flag) FlagSelect();
-            else if (gateSelectStat == GateSelectStat.money) MoneySelection();
-            else if (gateSelectStat == GateSelectStat.population) PopulationSelection();
+            else if (gateSelectStat == GateSelectStat.money) MoneySelection(other.gameObject);
+            else if (gateSelectStat == GateSelectStat.population) PopulationSelection(other.gameObject);
         }
     }
 
-    private void PopulationSelection()
+    private void PopulationSelection(GameObject obj)
     {
         int population = Random.Range(10, 30);
         int price = GateManager.Instance.moneyGatePrice;
 
         PopulationBar.Instance.BarUpdate(100, PopulationBar.Instance.populationCount, population);
-        PointText.Instance.CallRedText(gameObject, population);
+        PointText.Instance.CallRedText(obj, population);
 
         GameManager.Instance.addedMoney -= price;
         AnimController.Instance.CallDanceAnim();
     }
-    private void MoneySelection()
+    private void MoneySelection(GameObject obj)
     {
         int price = GateManager.Instance.moneyGatePrice;
         price = Random.Range(price, price * 3);
         int population = Random.Range(10, 15);
 
         GameManager.Instance.addedMoney += price;
-        PointText.Instance.CallGreenText(gameObject, price);
+        PointText.Instance.CallGreenText(obj, price);
 
         PopulationBar.Instance.BarUpdate(100, population * -1, population);
 
