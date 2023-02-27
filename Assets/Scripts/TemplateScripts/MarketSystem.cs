@@ -28,7 +28,8 @@ public class MarketSystem : MonoSingleton<MarketSystem>
     [Header("Market_UI_Field")]
     [Space(10)]
 
-    [SerializeField] private Button _marketButton, _marketBackButton;
+    [SerializeField] private Button _marketButton;
+    [SerializeField] private Button _marketBackButton;
     public RectTransform marketPanel;
     [SerializeField] int _stickmanCount;
     public int stickmanUsedCount;
@@ -81,22 +82,26 @@ public class MarketSystem : MonoSingleton<MarketSystem>
     }
     private void DownStickman()
     {
+        _stickmanImages[_stickmanCount].SetActive(false);
         _stickmanCount--;
-        _stickmanImages[_stickmanCount + 1].SetActive(false);
+        if (_stickmanCount == -1)
+            _stickmanCount = _stickmanPrices.Count - 1;
         _stickmanImages[_stickmanCount].SetActive(true);
         _stickmanPrice.text = _stickmanPrices[_stickmanCount].ToString();
         if (stickmanUsedCount == _stickmanCount) _buttonText.text = "Equipped";
-        if (FieldsBools.MarketFieldBuyed[_stickmanCount]) _buttonText.text = "Use";
+        else if (FieldsBools.MarketFieldBuyed[_stickmanCount]) _buttonText.text = "Use";
         else _buttonText.text = "Buy";
     }
     private void UpStickman()
     {
+        _stickmanImages[_stickmanCount].SetActive(false);
         _stickmanCount++;
-        _stickmanImages[_stickmanCount - 1].SetActive(false);
+        if (_stickmanCount == _stickmanPrices.Count)
+            _stickmanCount = 0;
         _stickmanImages[_stickmanCount].SetActive(true);
         _stickmanPrice.text = _stickmanPrices[_stickmanCount].ToString();
         if (stickmanUsedCount == _stickmanCount) _buttonText.text = "Equipped";
-        if (FieldsBools.MarketFieldBuyed[_stickmanCount]) _buttonText.text = "Use";
+        else if (FieldsBools.MarketFieldBuyed[_stickmanCount]) _buttonText.text = "Use";
         else _buttonText.text = "Buy";
     }
     public void MarketButton()

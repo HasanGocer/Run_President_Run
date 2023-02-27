@@ -7,6 +7,7 @@ public class AnimController : MonoSingleton<AnimController>
 {
     [SerializeField] private List<AnimancerComponent> character = new List<AnimancerComponent>();
     [SerializeField] private AnimationClip walk, sadWalk, winWalk, ýdle, dance, sad, sadFinish, winFinish;
+    public GameObject republicFlag, democraticFlag;
 
     public void CallIdleAnim()
     {
