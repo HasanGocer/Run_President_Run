@@ -62,11 +62,15 @@ public class GameManager : MonoSingleton<GameManager>
             PlayerPrefs.SetInt("sound", sound);
 
         if (PlayerPrefs.HasKey("first"))
+        {
             ItemData.Instance.factor = FactorPlacementRead();
+            MarketSystem.Instance.FieldsBools = MarketPlacementRead();
+        }
         else
         {
             PlayerPrefs.SetInt("first", 1);
             FactorPlacementWrite(ItemData.Instance.factor);
+            MarketPlacementWrite(MarketSystem.Instance.FieldsBools);
         }
     }
 
@@ -74,6 +78,11 @@ public class GameManager : MonoSingleton<GameManager>
     {
         string jsonData = JsonUtility.ToJson(factor);
         System.IO.File.WriteAllText(Application.persistentDataPath + "/FactorData.json", jsonData);
+    }
+    public void MarketPlacementWrite(MarketSystem.FieldBool field)
+    {
+        string jsonData = JsonUtility.ToJson(field);
+        System.IO.File.WriteAllText(Application.persistentDataPath + "/FieldData.json", jsonData);
     }
 
     public ItemData.Field FactorPlacementRead()
@@ -83,7 +92,13 @@ public class GameManager : MonoSingleton<GameManager>
         factor = JsonUtility.FromJson<ItemData.Field>(jsonRead);
         return factor;
     }
-
+    public MarketSystem.FieldBool MarketPlacementRead()
+    {
+        string jsonRead = System.IO.File.ReadAllText(Application.persistentDataPath + "/FieldData.json");
+        MarketSystem.FieldBool field = new MarketSystem.FieldBool();
+        field = JsonUtility.FromJson<MarketSystem.FieldBool>(jsonRead);
+        return field;
+    }
     public void SetMoney()
     {
         PlayerPrefs.SetInt("money", money);

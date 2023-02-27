@@ -28,113 +28,108 @@ public class MarketSystem : MonoSingleton<MarketSystem>
     [Header("Market_UI_Field")]
     [Space(10)]
 
-    [SerializeField] private Button _marketButton;
-    [SerializeField] private GameObject _marketOpenPos, _marketClosePos;
-    [SerializeField] GameObject _upImage, _downImage;
+    [SerializeField] private Button _marketButton, _marketBackButton;
     public RectTransform marketPanel;
-    [SerializeField] GameObject _marketScrollPanel;
-    [SerializeField] float _panelLerpMinDistance;
-    [SerializeField] int _panelLerpFactor;
+    [SerializeField] int _stickmanCount;
+    public int stickmanUsedCount;
+    [SerializeField] TMP_Text _stickmanPrice;
+    [SerializeField] List<GameObject> _stickmanImages = new List<GameObject>();
+    [SerializeField] Button _mainButton, _downButton, _upButton;
+    [SerializeField] TMP_Text _buttonText;
+    [SerializeField] List<int> _stickmanPrices = new List<int>();
+    public FieldBool FieldsBools = new FieldBool();
+    [SerializeField] Image _Around;
+    public GameObject stickmanParent;
     public bool isOpen = false;
 
     public void MarketStart()
     {
+        if (PlayerPrefs.HasKey("stickmanUsedCount")) stickmanUsedCount = PlayerPrefs.GetInt("stickmanUsedCount");
+        else PlayerPrefs.SetInt("stickmanUsedCount", stickmanUsedCount);
         MarketOnOffPlacement();
-        TextPlacement();
-        MarketButtonPlacement();
     }
 
     public void GameStart()
     {
-        _marketScrollPanel.SetActive(true);
         marketPanel.gameObject.SetActive(true);
     }
 
     public void GameFinish()
     {
-        _marketScrollPanel.SetActive(false);
         marketPanel.gameObject.SetActive(false);
     }
 
-    public void MarketPanelOff()
+    private void MarketBuyButton()
     {
-        _downImage.SetActive(false);
-        _upImage.SetActive(true);
-        StartCoroutine(MarketPanelMove());
+        if (stickmanUsedCount == _stickmanCount) { }
+        else if (FieldsBools.MarketFieldBuyed[_stickmanCount])
+        {
+            stickmanParent.transform.GetChild(stickmanUsedCount).gameObject.SetActive(false);
+            stickmanUsedCount = _stickmanCount;
+            stickmanParent.transform.GetChild(stickmanUsedCount).gameObject.SetActive(true);
+            PlayerPrefs.SetInt("stickmanUsedCount", stickmanUsedCount);
+            AnimController.Instance.CallIdleAnim();
+        }
+        else
+            if (GameManager.Instance.money >= _stickmanPrices[stickmanUsedCount])
+        {
+            MoneySystem.Instance.MoneyTextRevork(-1 * _stickmanPrices[stickmanUsedCount]);
+            FieldsBools.MarketFieldBuyed[stickmanUsedCount] = true;
+            GameManager.Instance.MarketPlacementWrite(FieldsBools);
+            _buttonText.text = "Use";
+        }
     }
-
-    private void MarketButton()
+    private void DownStickman()
+    {
+        _stickmanCount--;
+        _stickmanImages[_stickmanCount + 1].SetActive(false);
+        _stickmanImages[_stickmanCount].SetActive(true);
+        _stickmanPrice.text = _stickmanPrices[_stickmanCount].ToString();
+        if (stickmanUsedCount == _stickmanCount) _buttonText.text = "Equipped";
+        if (FieldsBools.MarketFieldBuyed[_stickmanCount]) _buttonText.text = "Use";
+        else _buttonText.text = "Buy";
+    }
+    private void UpStickman()
+    {
+        _stickmanCount++;
+        _stickmanImages[_stickmanCount - 1].SetActive(false);
+        _stickmanImages[_stickmanCount].SetActive(true);
+        _stickmanPrice.text = _stickmanPrices[_stickmanCount].ToString();
+        if (stickmanUsedCount == _stickmanCount) _buttonText.text = "Equipped";
+        if (FieldsBools.MarketFieldBuyed[_stickmanCount]) _buttonText.text = "Use";
+        else _buttonText.text = "Buy";
+    }
+    public void MarketButton()
     {
         if (!isOpen)
         {
             Buttons.Instance.SettingPanelOff();
-            _downImage.SetActive(true);
-            _upImage.SetActive(false);
-            StartCoroutine(MarketPanelMove());
+            marketPanel.gameObject.SetActive(true);
+            isOpen = true;
+            StartCoroutine(TurnAround());
         }
         else
         {
-            _downImage.SetActive(false);
-            _upImage.SetActive(true);
-            StartCoroutine(MarketPanelMove());
-        }
-    }
-    private void MarketButtonPlacement()
-    {
-        marketMainField.PlayerImageButton[0].onClick.AddListener(() => FieldBuy(0));
-        marketMainField.PlayerImageButton[1].onClick.AddListener(() => FieldBuy(1));
-        marketMainField.PlayerImageButton[2].onClick.AddListener(() => FieldBuy(2));
-        marketMainField.PlayerImageButton[3].onClick.AddListener(() => FieldBuy(3));
-    }
-    private IEnumerator MarketPanelMove()
-    {
-        float lerpCount = 0;
-        GameObject tempPos;
-        if (isOpen)
-        {
-            tempPos = _marketClosePos;
-            while (isOpen)
-            {
-                lerpCount += Time.deltaTime * _panelLerpFactor;
-                marketPanel.position = Vector2.Lerp(marketPanel.position, tempPos.transform.position, lerpCount);
-                yield return new WaitForSeconds(Time.deltaTime);
-                if (_panelLerpMinDistance >= Vector2.Distance(marketPanel.position, tempPos.transform.position)) break;
-            }
+            marketPanel.gameObject.SetActive(false);
             isOpen = false;
         }
-        else
-        {
-            tempPos = _marketOpenPos;
-            while (!isOpen)
-            {
-                lerpCount += Time.deltaTime * _panelLerpFactor;
-                marketPanel.position = Vector2.Lerp(marketPanel.position, tempPos.transform.position, lerpCount);
-                yield return new WaitForSeconds(Time.deltaTime);
-                if (_panelLerpMinDistance >= Vector2.Distance(marketPanel.position, tempPos.transform.position)) break;
-            }
-            isOpen = true;
-        }
-
-
     }
-    private void FieldBuy(int fieldCount)
+    private IEnumerator TurnAround()
     {
-        ItemData itemData = ItemData.Instance;
-        GameManager gameManager = GameManager.Instance;
-        MoneySystem moneySystem = MoneySystem.Instance;
+        yield return null;
 
-        switch (fieldCount)
+        while (isOpen)
         {
+            _Around.rectTransform.transform.rotation = Quaternion.Euler(new Vector3(0, 0, _Around.rectTransform.transform.rotation.z + Time.deltaTime));
+            yield return new WaitForSeconds(Time.deltaTime);
         }
-    }
-    private void TextPlacement()
-    {
-        ItemData itemData = ItemData.Instance;
-        MoneySystem moneySystem = MoneySystem.Instance;
-
     }
     private void MarketOnOffPlacement()
     {
         _marketButton.onClick.AddListener(MarketButton);
+        _marketBackButton.onClick.AddListener(MarketButton);
+        _mainButton.onClick.AddListener(MarketBuyButton);
+        _downButton.onClick.AddListener(DownStickman);
+        _upButton.onClick.AddListener(UpStickman);
     }
 }

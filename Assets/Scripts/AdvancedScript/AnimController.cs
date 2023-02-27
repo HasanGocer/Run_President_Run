@@ -5,12 +5,12 @@ using Animancer;
 
 public class AnimController : MonoSingleton<AnimController>
 {
-    [SerializeField] private AnimancerComponent character;
+    [SerializeField] private List<AnimancerComponent> character = new List<AnimancerComponent>();
     [SerializeField] private AnimationClip walk, sadWalk, winWalk, ýdle, dance, sad, sadFinish, winFinish;
 
     public void CallIdleAnim()
     {
-        character.Play(ýdle, 0.2f);
+        character[MarketSystem.Instance.stickmanUsedCount].Play(ýdle, 0.2f);
     }
     public void CallSadAnim()
     {
@@ -29,25 +29,25 @@ public class AnimController : MonoSingleton<AnimController>
 
     private void CallSadWalkAnim()
     {
-        character.Play(sadWalk, 0.2f);
+        character[MarketSystem.Instance.stickmanUsedCount].Play(sadWalk, 0.2f);
     }
     private void CallWalkAnim()
     {
-        character.Play(walk, 0.2f);
+        character[MarketSystem.Instance.stickmanUsedCount].Play(walk, 0.2f);
     }
     private void CallWinWalkAnim()
     {
-        character.Play(winWalk, 0.2f);
+        character[MarketSystem.Instance.stickmanUsedCount].Play(winWalk, 0.2f);
     }
     private IEnumerator CallDanceAnimEnum()
     {
-        character.Play(dance, 0.2f);
+        character[MarketSystem.Instance.stickmanUsedCount].Play(dance, 0.2f);
         yield return new WaitForSeconds(1);
         ChoiseWalkType();
     }
     private IEnumerator CallSadAnimEnum()
     {
-        character.Play(sad, 0.2f);
+        character[MarketSystem.Instance.stickmanUsedCount].Play(sad, 0.2f);
         yield return new WaitForSeconds(1);
         ChoiseWalkType();
     }

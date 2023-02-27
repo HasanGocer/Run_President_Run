@@ -165,7 +165,7 @@ public class Buttons : MonoSingleton<Buttons>
         if (GameManager.Instance.gameStat != GameManager.GameStat.finish)
         {
             if (MarketSystem.Instance.isOpen)
-                MarketSystem.Instance.MarketPanelOff();
+                MarketSystem.Instance.MarketButton();
             startPanel.SetActive(false);
             _settingGame.SetActive(true);
             _settingButton.gameObject.SetActive(false);
