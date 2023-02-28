@@ -8,7 +8,7 @@ public class AnimController : MonoSingleton<AnimController>
     [SerializeField] private List<AnimancerComponent> character = new List<AnimancerComponent>();
     [SerializeField] private AnimationClip walk, sadWalk, winWalk, ýdle, dance, sad, sadFinish, winFinish;
     public GameObject republicFlag, democraticFlag;
-    [SerializeField] GameObject poorPartical, richPartical;
+    [SerializeField] GameObject poorPartical, richPartical, bodyguard;
 
     public void CallIdleAnim()
     {
@@ -24,6 +24,7 @@ public class AnimController : MonoSingleton<AnimController>
     }
     public void ChoiseWalkType()
     {
+        bodyguard.SetActive(true);
         if (PopulationBar.Instance.populationCount > 70) CallWinWalkAnim();
         else if (PopulationBar.Instance.populationCount > 50) CallWalkAnim();
         else CallSadWalkAnim();

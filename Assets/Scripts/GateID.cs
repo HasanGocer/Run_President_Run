@@ -35,12 +35,22 @@ public class GateID : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") && !isTouch && !broGateID.isTouch)
+        if (other.CompareTag("Player") && !isTouch)
         {
-            isTouch = true;
-            if (gateSelectStat == GateSelectStat.flag) FlagSelect();
-            else if (gateSelectStat == GateSelectStat.money) MoneySelection(other.gameObject);
-            else if (gateSelectStat == GateSelectStat.population) PopulationSelection(other.gameObject);
+            if (broGateID == null)
+            {
+                isTouch = true;
+                if (gateSelectStat == GateSelectStat.flag) FlagSelect();
+                else if (gateSelectStat == GateSelectStat.money) MoneySelection(other.gameObject);
+                else if (gateSelectStat == GateSelectStat.population) PopulationSelection(other.gameObject);
+            }
+            else if (!broGateID.isTouch)
+            {
+                isTouch = true;
+                if (gateSelectStat == GateSelectStat.flag) FlagSelect();
+                else if (gateSelectStat == GateSelectStat.money) MoneySelection(other.gameObject);
+                else if (gateSelectStat == GateSelectStat.population) PopulationSelection(other.gameObject);
+            }
         }
     }
 
@@ -78,11 +88,13 @@ public class GateID : MonoBehaviour
         {
             gameManager.flagStat = GameManager.FlagStat.america;
             AnimController.Instance.republicFlag.SetActive(true);
+            AnimController.Instance.democraticFlag.SetActive(false);
         }
         else if (gateCount == 1)
         {
             gameManager.flagStat = GameManager.FlagStat.russia;
             AnimController.Instance.democraticFlag.SetActive(true);
+            AnimController.Instance.republicFlag.SetActive(false);
         }
     }
 }
