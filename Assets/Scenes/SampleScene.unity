@@ -15366,6 +15366,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moneyGatePrice: 100
   moneyFieldPrice: 50
+  GatePoses: []
+  TempGates: []
 --- !u!1001 &358912921
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -72181,6 +72183,7 @@ GameObject:
   - component: {fileID: 1725718916}
   - component: {fileID: 1725718915}
   - component: {fileID: 1725718914}
+  - component: {fileID: 1725718919}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -72308,6 +72311,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: edb5d603548aaf04fbcfbb6a2a1c51a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1725718919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1725718908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d9f23fe3d189d545ab444ff3047afe7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1725934529

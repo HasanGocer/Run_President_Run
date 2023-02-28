@@ -57,6 +57,7 @@ public class Buttons : MonoSingleton<Buttons>
 
     public IEnumerator LoadingScreen()
     {
+        GateManager.Instance.GatePlacement();
 
         _loadingPanel.SetActive(true);
         _globalPanel.SetActive(false);
