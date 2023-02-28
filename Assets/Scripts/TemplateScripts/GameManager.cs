@@ -16,8 +16,8 @@ public class GameManager : MonoSingleton<GameManager>
 
     public enum FlagStat
     {
-        republic = 0,
-        democratic = 1
+        america = 0,
+        russia = 1
     }
 
 

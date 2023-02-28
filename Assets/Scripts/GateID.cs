@@ -35,7 +35,6 @@ public class GateID : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        print(31);
         if (other.CompareTag("Player") && !isTouch && !broGateID.isTouch)
         {
             isTouch = true;
@@ -76,12 +75,12 @@ public class GateID : MonoBehaviour
         PopulationBar.Instance.BarOpen();
         if (gateCount == 0)
         {
-            gameManager.flagStat = GameManager.FlagStat.republic;
+            gameManager.flagStat = GameManager.FlagStat.america;
             AnimController.Instance.republicFlag.SetActive(true);
         }
         else if (gateCount == 1)
         {
-            gameManager.flagStat = GameManager.FlagStat.democratic;
+            gameManager.flagStat = GameManager.FlagStat.russia;
             AnimController.Instance.democraticFlag.SetActive(true);
         }
     }

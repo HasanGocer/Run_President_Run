@@ -30,7 +30,7 @@ public class PopulationBar : MonoSingleton<PopulationBar>
         while (true)
         {
             lerpCount += Time.deltaTime * _barSpeed;
-            _populationBarImage.fillAmount = Mathf.Lerp(start, finish, Time.deltaTime);
+            _populationBarImage.fillAmount = Mathf.Lerp(_populationBarImage.fillAmount, finish, Time.deltaTime);
             yield return new WaitForSeconds(Time.deltaTime);
             if (_populationBarImage.fillAmount == finish) break;
         }

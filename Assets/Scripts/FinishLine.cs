@@ -33,6 +33,8 @@ public class FinishLine : MonoBehaviour
     private IEnumerator MoveTime(GameObject player, GameObject finishPos)
     {
         player.transform.DOMove(finishPos.transform.position, _finishMoveTime);
+        ParticalManager.Instance.CallWinFinishPartical();
+        ParticalManager.Instance.CallWinManPartical(player);
         yield return new WaitForSeconds(_finishMoveTime);
         FinishSystem.Instance.FinishCheck();
 

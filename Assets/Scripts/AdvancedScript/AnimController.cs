@@ -8,6 +8,7 @@ public class AnimController : MonoSingleton<AnimController>
     [SerializeField] private List<AnimancerComponent> character = new List<AnimancerComponent>();
     [SerializeField] private AnimationClip walk, sadWalk, winWalk, ýdle, dance, sad, sadFinish, winFinish;
     public GameObject republicFlag, democraticFlag;
+    [SerializeField] GameObject poorPartical, richPartical;
 
     public void CallIdleAnim()
     {
@@ -30,14 +31,20 @@ public class AnimController : MonoSingleton<AnimController>
 
     private void CallSadWalkAnim()
     {
+        poorPartical.SetActive(true);
+        richPartical.SetActive(false);
         character[MarketSystem.Instance.stickmanUsedCount].Play(sadWalk, 0.2f);
     }
     private void CallWalkAnim()
     {
+        poorPartical.SetActive(false);
+        richPartical.SetActive(false);
         character[MarketSystem.Instance.stickmanUsedCount].Play(walk, 0.2f);
     }
     private void CallWinWalkAnim()
     {
+        poorPartical.SetActive(false);
+        richPartical.SetActive(true);
         character[MarketSystem.Instance.stickmanUsedCount].Play(winWalk, 0.2f);
     }
     private IEnumerator CallDanceAnimEnum()
