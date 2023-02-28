@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0.33164707, b: 0.99999905, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0.4437725, b: 0.99999905, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -21922,7 +21922,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 507665911}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -30850,7 +30850,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 716271904}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.97, z: 260}
+  m_LocalPosition: {x: 0, y: -0.97, z: 267.17}
   m_LocalScale: {x: 6, y: 5, z: 30}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -31265,7 +31265,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 727471963}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.02, y: -1, z: 127.3}
+  m_LocalPosition: {x: -2, y: -1, z: 127.3}
   m_LocalScale: {x: 4, y: 5, z: 30}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -69055,7 +69055,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1645828638}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1, z: 260}
+  m_LocalPosition: {x: 0, y: -1, z: 266.7}
   m_LocalScale: {x: 20, y: 5, z: 30}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -88166,7 +88166,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2146586123}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1, z: 190.6}
+  m_LocalPosition: {x: 0, y: -1, z: 197.30002}
   m_LocalScale: {x: 8, y: 5, z: 110}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -96691,7 +96691,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!222 &7785779563522009065
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -96713,14 +96713,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -98227,7 +98227,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: db5cbda2099ae334d9c848cc1f250b01, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3c9a8ee3115ec3e43aba9876f0142b1f, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
