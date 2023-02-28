@@ -53,6 +53,7 @@ public class GateID : MonoBehaviour
         PointText.Instance.CallRedText(obj, population);
 
         GameManager.Instance.addedMoney -= price;
+        if (GameManager.Instance.addedMoney < 0) GameManager.Instance.addedMoney = 0;
         AnimController.Instance.CallDanceAnim();
     }
     private void MoneySelection(GameObject obj)
