@@ -121,6 +121,7 @@ public class Buttons : MonoSingleton<Buttons>
         GameManager.Instance.gameStat = GameManager.GameStat.start;
         startPanel.SetActive(false);
         AnimController.Instance.ChoiseWalkType();
+        PopulationBar.Instance.BarOpen();
     }
     private IEnumerator WinButton()
     {
