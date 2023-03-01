@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
     public float Verticalspeed = 1f, horizontalSpeed;
     private Vector3 movement;
     public float xBound = 4.3f;
+
 
     void Update()
     {
@@ -47,9 +49,12 @@ public class PlayerController : MonoBehaviour
         }
 
     }
+
     /*private void LeftRightMove()
     {
         Vector2 inputVector = PlayerInputs.Player.Movement.ReadValue<Vector2>();
+        
+        print(inputVector.x);
         movement = new Vector3(inputVector.x, 0, 0);
         transform.position = Vector3.Lerp(transform.position, transform.position + movement * horizontalSpeed * Time.deltaTime, Time.deltaTime);
 

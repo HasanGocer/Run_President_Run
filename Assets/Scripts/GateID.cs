@@ -56,7 +56,7 @@ public class GateID : MonoBehaviour
 
     private void PopulationSelection(GameObject obj)
     {
-        int population = Random.Range(10, 30);
+        int population = Random.Range(20, 30);
         int price = GateManager.Instance.moneyGatePrice;
 
         PopulationBar.Instance.BarUpdate(100, PopulationBar.Instance.populationCount, population);
@@ -73,7 +73,7 @@ public class GateID : MonoBehaviour
     {
         int price = GateManager.Instance.moneyGatePrice;
         price = Random.Range(price, price * 3);
-        int population = Random.Range(20, 30);
+        int population = Random.Range(5, 15);
 
         ParticalManager.Instance.CallMoneyGatePartical(obj);
         GameManager.Instance.addedMoney += price;
