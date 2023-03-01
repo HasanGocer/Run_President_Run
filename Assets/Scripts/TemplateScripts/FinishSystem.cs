@@ -9,11 +9,6 @@ public class FinishSystem : MonoSingleton<FinishSystem>
 
     int freeCount;
 
-    public void FinishCheck()
-    {
-        if (GameManager.Instance.gameStat == GameManager.GameStat.start)
-            FinishTime();
-    }
     public void FinishTime()
     {
         GameManager gameManager = GameManager.Instance;
@@ -24,6 +19,5 @@ public class FinishSystem : MonoSingleton<FinishSystem>
         buttons.winPanel.SetActive(true);
         buttons.barPanel.SetActive(true);
         buttons.finishGameMoneyText.text = moneySystem.NumberTextRevork(gameManager.addedMoney);
-        gameManager.gameStat = GameManager.GameStat.finish;
     }
 }

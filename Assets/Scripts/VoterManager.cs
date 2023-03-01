@@ -10,10 +10,10 @@ public class VoterManager : MonoSingleton<VoterManager>
 
     public void VoterAdded()
     {
-        int xDistance = Random.Range(-100, 100);
+        int xDistance = Random.Range(-300, 300);
         float xDistanceFloat = (float)xDistance / 100;
 
-        int zDistance = Random.Range(-100, 0);
+        int zDistance = Random.Range(-300, 0);
         float zDistanceFloat = (float)zDistance / 100;
 
         GameObject obj = ObjectPool.Instance.GetPooledObject(_OPWalkerVoterCount, _spawnPos.transform.position + new Vector3(xDistanceFloat, 0, zDistanceFloat));

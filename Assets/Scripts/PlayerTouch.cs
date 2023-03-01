@@ -8,13 +8,20 @@ public class PlayerTouch : MonoBehaviour
     {
         if (other.CompareTag("Tax")) MoneyAdded(other.gameObject);
         else if (other.CompareTag("Population")) PopulationAdded(other.gameObject);
+        else if (other.CompareTag("Breaker")) BreakerTouch(other);
+    }
+    private void BreakerTouch(Collider other)
+    {
+        other.enabled = false;
+        PopulationBar.Instance.BarUpdate(100, PopulationBar.Instance.populationCount, 3 * -1);
     }
     private void PopulationAdded(GameObject pop)
     {
         PopulationBar populationBar = PopulationBar.Instance;
 
         ParticalManager.Instance.CallMoneyGatePartical(gameObject);
-        VoterManager.Instance.VoterAdded();
+        for (int i = 0; i < 5; i++)
+            VoterManager.Instance.VoterAdded();
         pop.SetActive(false);
         populationBar.BarUpdate(100, populationBar.populationCount, 5);
     }

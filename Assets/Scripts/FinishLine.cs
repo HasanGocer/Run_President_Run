@@ -7,7 +7,8 @@ public class FinishLine : MonoBehaviour
 {
     [SerializeField] GameObject _thridhObject, _secondObject, _firstObject;
     [SerializeField] GameObject _thridhPos, _secondPos, _firstPos;
-    [SerializeField] int _finishMoveTime;
+    [SerializeField] int _finishMoveTime, _finishVoteTime;
+    [SerializeField] GameObject finishCamPos, playerPos, blueVote, redVote;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -35,8 +36,21 @@ public class FinishLine : MonoBehaviour
         player.transform.DOMove(finishPos.transform.position, _finishMoveTime);
         ParticalManager.Instance.CallWinFinishPartical();
         ParticalManager.Instance.CallWinManPartical(player);
+        GameManager.Instance.gameStat = GameManager.GameStat.finish;
+        AnimController.Instance.FinishSelect();
         yield return new WaitForSeconds(_finishMoveTime);
-        FinishSystem.Instance.FinishCheck();
-
+        VoteTime(player);
+        yield return new WaitForSeconds(_finishVoteTime);
+        FinishSystem.Instance.FinishTime();
+    }
+    private void VoteTime(GameObject player)
+    {
+        Camera.main.gameObject.GetComponent<CamMoveControl>().enabled = false;
+        Camera.main.gameObject.transform.position = finishCamPos.transform.position;
+        player.transform.position = playerPos.transform.position;
+        AnimController.Instance.CallIdleAnim();
+        player.transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
+        blueVote.transform.DOScale(new Vector3(3, PopulationBar.Instance.populationCount / 5, 3), _finishVoteTime);
+        redVote.transform.DOScale(new Vector3(3, (100 - PopulationBar.Instance.populationCount) / 5, 3), _finishVoteTime);
     }
 }

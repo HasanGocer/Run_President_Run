@@ -29,6 +29,11 @@ public class AnimController : MonoSingleton<AnimController>
         else if (PopulationBar.Instance.populationCount > 50) CallWalkAnim();
         else CallSadWalkAnim();
     }
+    public void FinishSelect()
+    {
+        bodyguard.SetActive(false);
+        foreach (GameObject item in VoterManager.Instance.Voters) item.SetActive(false);
+    }
 
     private void CallSadWalkAnim()
     {
