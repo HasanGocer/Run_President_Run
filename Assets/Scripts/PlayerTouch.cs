@@ -6,7 +6,7 @@ public class PlayerTouch : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Money")) MoneyAdded(other.gameObject);
+        if (other.CompareTag("Tax")) MoneyAdded(other.gameObject);
         else if (other.CompareTag("Population")) PopulationAdded(other.gameObject);
     }
     private void PopulationAdded(GameObject pop)

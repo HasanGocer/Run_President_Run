@@ -28,11 +28,20 @@ public class PlayerController : MonoBehaviour
         if (touchCount > 0)
         {
             Touch touch = Input.GetTouch(0);
-
+            float xdistance;
             switch (touch.phase)
             {
+                case UnityEngine.TouchPhase.Began:
+                    if (touch.position.x < 150) xdistance = xBound * -1;
+                    else if (touch.position.x > Camera.main.pixelWidth - 150) xdistance = xBound;
+                    else xdistance = (touch.position.x / (Camera.main.pixelWidth - 300)) * (xBound * 2) - xBound;
+                    gameObject.transform.position = new Vector3(xdistance, gameObject.transform.position.y, gameObject.transform.position.z);
+                    break;
                 case UnityEngine.TouchPhase.Moved:
-                    gameObject.transform.position = new Vector3((touch.position.x / Camera.main.pixelWidth) * (xBound * 2) - xBound, gameObject.transform.position.y, gameObject.transform.position.z);
+                    if (touch.position.x < 150) xdistance = xBound * -1;
+                    else if (touch.position.x > Camera.main.pixelWidth - 150) xdistance = xBound;
+                    else xdistance = (touch.position.x / (Camera.main.pixelWidth - 300)) * (xBound * 2) - xBound;
+                    gameObject.transform.position = new Vector3(xdistance, gameObject.transform.position.y, gameObject.transform.position.z);
                     break;
             }
         }

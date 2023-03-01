@@ -75,7 +75,7 @@ public class GateID : MonoBehaviour
         GameManager.Instance.addedMoney += price;
         PointText.Instance.CallGreenText(obj, price);
 
-        PopulationBar.Instance.BarUpdate(100, population * -1, population);
+        PopulationBar.Instance.BarUpdate(100, PopulationBar.Instance.populationCount, population * -1);
 
         AnimController.Instance.CallSadAnim();
     }
