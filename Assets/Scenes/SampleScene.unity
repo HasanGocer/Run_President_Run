@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.536444, g: 0.07318098, b: 0.53644365, a: 1}
+  m_IndirectSpecularColor: {r: 0.53644407, g: 0.07318098, b: 0.53644365, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3310,7 +3310,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 0.43
+  m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -53441,7 +53441,8 @@ MonoBehaviour:
   finishWaitTime: 1
   finishGameMoneyText: {fileID: 5494355841505288309}
   _loadingPanel: {fileID: 1514142648}
-  _loadingScreenCountdownTime: 2
+  _barLerp: {fileID: 87771223}
+  _lerpFactor: 1
   _startSceneCount: 0
 --- !u!114 &1566941524
 MonoBehaviour:
