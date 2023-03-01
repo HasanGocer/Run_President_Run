@@ -8,7 +8,7 @@ public class FinishLine : MonoBehaviour
     [SerializeField] GameObject _thridhObject, _secondObject, _firstObject;
     [SerializeField] GameObject _thridhPos, _secondPos, _firstPos;
     [SerializeField] int _finishMoveTime, _finishVoteTime;
-    [SerializeField] GameObject finishCamPos, playerPos, blueVote, redVote;
+    [SerializeField] GameObject finishCamPos, playerPos, blueVote, redVote, BlueFlag, RedFlag;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -46,10 +46,22 @@ public class FinishLine : MonoBehaviour
     private void VoteTime(GameObject player)
     {
         Camera.main.gameObject.GetComponent<CamMoveControl>().enabled = false;
-        Camera.main.gameObject.transform.position = finishCamPos.transform.position;
+        Camera.main.gameObject.transform.DOMove(finishCamPos.transform.position, 1);
         player.transform.position = playerPos.transform.position;
         AnimController.Instance.CallIdleAnim();
         player.transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
+        if (GameManager.Instance.flagStat == GameManager.FlagStat.america)
+        {
+            BlueFlag.transform.GetChild(0).gameObject.SetActive(true);
+            RedFlag.transform.GetChild(1).gameObject.SetActive(true);
+        }
+        else
+        {
+            BlueFlag.transform.GetChild(1).gameObject.SetActive(true);
+            RedFlag.transform.GetChild(0).gameObject.SetActive(true);
+        }
+        BlueFlag.transform.DOMove(new Vector3(BlueFlag.transform.position.x, BlueFlag.transform.position.y + PopulationBar.Instance.populationCount / 5 + 1, BlueFlag.transform.position.z), _finishVoteTime);
+        RedFlag.transform.DOMove(new Vector3(RedFlag.transform.position.x, RedFlag.transform.position.y + (100 - PopulationBar.Instance.populationCount) / 5 + 1, RedFlag.transform.position.z), _finishVoteTime);
         blueVote.transform.DOScale(new Vector3(3, PopulationBar.Instance.populationCount / 5, 3), _finishVoteTime);
         redVote.transform.DOScale(new Vector3(3, (100 - PopulationBar.Instance.populationCount) / 5, 3), _finishVoteTime);
     }
