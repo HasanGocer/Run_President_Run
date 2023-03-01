@@ -47,6 +47,8 @@ public class MarketSystem : MonoSingleton<MarketSystem>
     {
         if (PlayerPrefs.HasKey("stickmanUsedCount")) stickmanUsedCount = PlayerPrefs.GetInt("stickmanUsedCount");
         else PlayerPrefs.SetInt("stickmanUsedCount", stickmanUsedCount);
+        stickmanParent.transform.GetChild(stickmanUsedCount).gameObject.SetActive(true);
+
         MarketOnOffPlacement();
     }
 
@@ -70,6 +72,7 @@ public class MarketSystem : MonoSingleton<MarketSystem>
             stickmanParent.transform.GetChild(stickmanUsedCount).gameObject.SetActive(true);
             PlayerPrefs.SetInt("stickmanUsedCount", stickmanUsedCount);
             AnimController.Instance.CallIdleAnim();
+            _buttonText.text = "Equipped";
         }
         else
             if (GameManager.Instance.money >= _stickmanPrices[stickmanUsedCount])

@@ -73,7 +73,7 @@ public class GateID : MonoBehaviour
     {
         int price = GateManager.Instance.moneyGatePrice;
         price = Random.Range(price, price * 3);
-        int population = Random.Range(10, 15);
+        int population = Random.Range(20, 30);
 
         ParticalManager.Instance.CallMoneyGatePartical(obj);
         GameManager.Instance.addedMoney += price;

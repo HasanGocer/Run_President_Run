@@ -20,10 +20,10 @@ public class PlayerTouch : MonoBehaviour
         PopulationBar populationBar = PopulationBar.Instance;
 
         ParticalManager.Instance.CallMoneyGatePartical(gameObject);
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 10; i++)
             VoterManager.Instance.VoterAdded();
         pop.SetActive(false);
-        populationBar.BarUpdate(100, populationBar.populationCount, 5);
+        populationBar.BarUpdate(100, populationBar.populationCount, 10);
     }
     private void MoneyAdded(GameObject money)
     {
