@@ -72,6 +72,7 @@ public class GateID : MonoBehaviour
         price = Random.Range(price, price * 3);
         int population = Random.Range(10, 15);
 
+        ParticalManager.Instance.CallMoneyGatePartical(obj);
         GameManager.Instance.addedMoney += price;
         PointText.Instance.CallGreenText(obj, price);
 

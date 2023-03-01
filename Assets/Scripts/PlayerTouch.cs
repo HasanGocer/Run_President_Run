@@ -13,6 +13,7 @@ public class PlayerTouch : MonoBehaviour
     {
         PopulationBar populationBar = PopulationBar.Instance;
 
+        ParticalManager.Instance.CallMoneyGatePartical(gameObject);
         VoterManager.Instance.VoterAdded();
         pop.SetActive(false);
         populationBar.BarUpdate(100, populationBar.populationCount, 5);

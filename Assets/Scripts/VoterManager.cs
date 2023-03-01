@@ -19,6 +19,5 @@ public class VoterManager : MonoSingleton<VoterManager>
         GameObject obj = ObjectPool.Instance.GetPooledObject(_OPWalkerVoterCount, _spawnPos.transform.position + new Vector3(xDistanceFloat, 0, zDistanceFloat));
         obj.transform.SetParent(_spawnPos.transform);
         Voters.Add(obj);
-
     }
 }
