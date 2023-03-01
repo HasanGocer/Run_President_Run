@@ -60,8 +60,8 @@ public class FinishLine : MonoBehaviour
             BlueFlag.transform.GetChild(1).gameObject.SetActive(true);
             RedFlag.transform.GetChild(0).gameObject.SetActive(true);
         }
-        BlueFlag.transform.DOMove(new Vector3(BlueFlag.transform.position.x, BlueFlag.transform.position.y + PopulationBar.Instance.populationCount / 5 + 1, BlueFlag.transform.position.z), _finishVoteTime);
-        RedFlag.transform.DOMove(new Vector3(RedFlag.transform.position.x, RedFlag.transform.position.y + (100 - PopulationBar.Instance.populationCount) / 5 + 1, RedFlag.transform.position.z), _finishVoteTime);
+        BlueFlag.transform.DOMove(new Vector3(BlueFlag.transform.position.x, BlueFlag.transform.position.y + PopulationBar.Instance.populationCount / 10 + 1, BlueFlag.transform.position.z), _finishVoteTime);
+        RedFlag.transform.DOMove(new Vector3(RedFlag.transform.position.x, RedFlag.transform.position.y + (100 - PopulationBar.Instance.populationCount) / 10 + 1, RedFlag.transform.position.z), _finishVoteTime);
         blueVote.transform.DOScale(new Vector3(3, PopulationBar.Instance.populationCount / 5, 3), _finishVoteTime);
         redVote.transform.DOScale(new Vector3(3, (100 - PopulationBar.Instance.populationCount) / 5, 3), _finishVoteTime);
     }
