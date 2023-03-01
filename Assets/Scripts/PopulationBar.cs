@@ -28,17 +28,20 @@ public class PopulationBar : MonoSingleton<PopulationBar>
             afterBar = 1;
             populationCount = 100;
         }
-        StartCoroutine(BarUpdateEnum(nowBar, afterBar));
+
+        if (down > 0) StartCoroutine(BarUpdateEnum(nowBar, afterBar, true));
+        else StartCoroutine(BarUpdateEnum(nowBar, afterBar, false));
     }
 
-    private IEnumerator BarUpdateEnum(float start, float finish)
+    private IEnumerator BarUpdateEnum(float start, float finish, bool isPlus)
     {
         float lerpCount = 0;
 
         while (true)
         {
-            lerpCount += Time.deltaTime * _barSpeed;
-            _populationBarImage.fillAmount = Mathf.Lerp(_populationBarImage.fillAmount, finish, Time.deltaTime);
+            if (isPlus) lerpCount += Time.deltaTime * _barSpeed * 2;
+            else lerpCount += Time.deltaTime * _barSpeed;
+            _populationBarImage.fillAmount = Mathf.Lerp(start, finish, Time.deltaTime);
             yield return new WaitForSeconds(Time.deltaTime);
             if (_populationBarImage.fillAmount == finish) break;
         }

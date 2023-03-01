@@ -60,8 +60,8 @@ public class GateID : MonoBehaviour
         int price = GateManager.Instance.moneyGatePrice;
 
         PopulationBar.Instance.BarUpdate(100, PopulationBar.Instance.populationCount, population);
-        PointText.Instance.CallRedText(obj, population);
-
+        PointText.Instance.CallGreenText(obj, population);
+        SoundSystem.Instance.CallGate();
         for (int i = 0; i < population; i++)
             VoterManager.Instance.VoterAdded();
 
@@ -75,9 +75,11 @@ public class GateID : MonoBehaviour
         price = Random.Range(price, price * 3);
         int population = Random.Range(5, 15);
 
+        SoundSystem.Instance.CallCoin();
+        SoundSystem.Instance.CallGate();
         ParticalManager.Instance.CallMoneyGatePartical(obj);
         GameManager.Instance.addedMoney += price;
-        PointText.Instance.CallGreenText(obj, price);
+        PointText.Instance.CallRedText(obj, price);
 
         PopulationBar.Instance.BarUpdate(100, PopulationBar.Instance.populationCount, population * -1);
 
@@ -87,6 +89,7 @@ public class GateID : MonoBehaviour
     {
         GameManager gameManager = GameManager.Instance;
 
+        SoundSystem.Instance.CallGate();
         PopulationBar.Instance.BarOpen();
         if (gateCount == 0)
         {

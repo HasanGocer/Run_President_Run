@@ -16,6 +16,7 @@ public class FinishSystem : MonoSingleton<FinishSystem>
         MoneySystem moneySystem = MoneySystem.Instance;
         if (PopulationBar.Instance.populationCount >= 50)
         {
+            SoundSystem.Instance.CallFinishWin();
             StartCoroutine(BarSystem.Instance.BarImageFillAmountIenum());
             LevelManager.Instance.LevelCheck();
             buttons.winPanel.SetActive(true);

@@ -366,7 +366,7 @@ Transform:
   m_GameObject: {fileID: 4091896049231155831}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4091896048760930105}
@@ -551,10 +551,10 @@ MonoBehaviour:
   enableLerp: 1
   lerpSettings:
     speed: 5
-    minX: -0.4
-    maxX: 0.4
-    minY: 0.5
-    maxY: 1
+    minX: 0
+    maxX: 0
+    minY: 3
+    maxY: 4
     randomFlip: 0
   enableVelocity: 0
   velocitySettings:

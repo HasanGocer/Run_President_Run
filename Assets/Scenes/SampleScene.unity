@@ -53476,7 +53476,7 @@ MonoBehaviour:
   populationCount: 0
   _populationBarImage: {fileID: 7785779563920707510}
   _populationBarPanel: {fileID: 7785779563522009044}
-  _barSpeed: 5
+  _barSpeed: 10
 --- !u!114 &1566941526
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58574,8 +58574,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainSource: {fileID: 330585549}
   mainMusic: {fileID: 0}
-  bloomEffect: {fileID: 0}
-  goldEffect: {fileID: 0}
+  winFinish: {fileID: 8300000, guid: 5722479ae9d18824ab3166b441a6a25b, type: 3}
+  goldEffect: {fileID: 8300000, guid: 6af7c30c860ba1544994f60e138fb05e, type: 3}
+  gate: {fileID: 8300000, guid: 1649c1e9b74682d48a94744ff2d764a5, type: 3}
 --- !u!114 &1725718915
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58615,7 +58616,8 @@ MonoBehaviour:
   - objectPrefab: {fileID: 119752, guid: 3f6eb9fcc8714f348ba268bf316e7d39, type: 3}
     objectParent: {fileID: 0}
     poolSize: 100
-  - objectPrefab: {fileID: 119752, guid: 3f6eb9fcc8714f348ba268bf316e7d39, type: 3}
+  - objectPrefab: {fileID: 1670336210522388, guid: 19c065b476ca9a24e839e181a781c36c,
+      type: 3}
     objectParent: {fileID: 0}
     poolSize: 100
   - objectPrefab: {fileID: 118250, guid: a79f8048fa75d6c449d730e96bb836fa, type: 3}
@@ -82556,7 +82558,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 1
+  m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
