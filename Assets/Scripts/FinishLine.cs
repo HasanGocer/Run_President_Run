@@ -53,6 +53,7 @@ public class FinishLine : MonoBehaviour
         yield return new WaitForSeconds(3);
         _stickman1.GetComponent<AnimancerComponent>().Play(ýdle, 0.2f);
         _stickman2.GetComponent<AnimancerComponent>().Play(ýdle, 0.2f);
+        yield return new WaitForSeconds(2);
         FinishSystem.Instance.FinishTime();
     }
 
