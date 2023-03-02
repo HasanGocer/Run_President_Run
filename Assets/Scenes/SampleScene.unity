@@ -24861,7 +24861,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e1ec3805bc1d064d9c457a3a0942312, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Verticalspeed: 300
+  Verticalspeed: 100
   horizontalSpeed: 0
   xBound: 4.3
 --- !u!114 &665925234
@@ -54730,7 +54730,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acb88cee4e7460441ae70ebaee965ed0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  populationCount: 0
+  populationCount: 50
   _populationBarImage: {fileID: 7785779563920707510}
   _populationBarPanel: {fileID: 7785779563522009044}
   _barSpeed: 20

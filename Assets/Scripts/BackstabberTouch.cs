@@ -6,6 +6,10 @@ public class BackstabberTouch : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Breaker")) gameObject.SetActive(false);
+        if (other.CompareTag("Breaker"))
+        {
+            gameObject.SetActive(false);
+            print(21);
+        }
     }
 }
