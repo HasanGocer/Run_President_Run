@@ -23,7 +23,7 @@ public class PlayerTouch : MonoBehaviour
         for (int i = 0; i < 10; i++)
             VoterManager.Instance.VoterAdded();
         pop.SetActive(false);
-        populationBar.BarUpdate(5);
+        populationBar.BarUpdate(3);
     }
     private void MoneyAdded(GameObject money)
     {
