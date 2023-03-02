@@ -10,6 +10,12 @@ public class FinishLine : MonoBehaviour
     [SerializeField] int _finishMoveTime, _finishVoteTime;
     [SerializeField] GameObject finishCamPos, playerPos, blueVote, redVote, BlueFlag, RedFlag;
 
+    [Header("Stickman_Field")]
+    [Space(10)]
+    [SerializeField] GameObject _stickman1Pos;
+    [SerializeField] GameObject _stickman2Pos;
+    [SerializeField] GameObject _stickman1, _stickman2, _stickmanFlag1, _stickmanFlag2;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -41,7 +47,43 @@ public class FinishLine : MonoBehaviour
         yield return new WaitForSeconds(_finishMoveTime);
         VoteTime(player);
         yield return new WaitForSeconds(_finishVoteTime);
+        StickmanTime();
+        yield return new WaitForSeconds(3);
         FinishSystem.Instance.FinishTime();
+    }
+
+    private void StickmanTime()
+    {
+        if (PopulationBar.Instance.populationCount > 50)
+        {
+            if (GameManager.Instance.flagStat == GameManager.FlagStat.america)
+            {
+                _stickmanFlag1.transform.GetChild(0).gameObject.SetActive(true);
+                _stickmanFlag2.transform.GetChild(0).gameObject.SetActive(true);
+            }
+            else
+            {
+                _stickmanFlag1.transform.GetChild(1).gameObject.SetActive(true);
+                _stickmanFlag2.transform.GetChild(1).gameObject.SetActive(true);
+            }
+        }
+        else
+        {
+            if (GameManager.Instance.flagStat == GameManager.FlagStat.america)
+            {
+                _stickmanFlag1.transform.GetChild(1).gameObject.SetActive(true);
+                _stickmanFlag2.transform.GetChild(1).gameObject.SetActive(true);
+            }
+            else
+            {
+                _stickmanFlag1.transform.GetChild(0).gameObject.SetActive(true);
+                _stickmanFlag2.transform.GetChild(0).gameObject.SetActive(true);
+            }
+        }
+        _stickman1.SetActive(true);
+        _stickman2.SetActive(true);
+        _stickman1.transform.DOMove(_stickman1Pos.transform.position, 3);
+        _stickman2.transform.DOMove(_stickman2Pos.transform.position, 3);
     }
     private void VoteTime(GameObject player)
     {
