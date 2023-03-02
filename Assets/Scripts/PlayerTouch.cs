@@ -23,12 +23,13 @@ public class PlayerTouch : MonoBehaviour
         for (int i = 0; i < 10; i++)
             VoterManager.Instance.VoterAdded();
         pop.SetActive(false);
-        populationBar.BarUpdate(10);
+        populationBar.BarUpdate(5);
     }
     private void MoneyAdded(GameObject money)
     {
         money.SetActive(false);
         SoundSystem.Instance.CallCoin();
+        PopulationBar.Instance.BarUpdate(3 * -1);
         GameManager.Instance.addedMoney += GateManager.Instance.moneyFieldPrice;
     }
 }
