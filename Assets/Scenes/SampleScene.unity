@@ -19746,13 +19746,14 @@ GameObject:
   m_Component:
   - component: {fileID: 521415395}
   - component: {fileID: 521415396}
+  - component: {fileID: 521415397}
   m_Layer: 0
   m_Name: Stickman1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &521415395
 Transform:
   m_ObjectHideFlags: 0
@@ -19781,7 +19782,7 @@ Animator:
   m_GameObject: {fileID: 521415394}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: f3559152603355f48908fb9d44ce09b7, type: 3}
-  m_Controller: {fileID: 9100000, guid: 61a7d9e0126c9ef4eaf68e263d3224b8, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -19791,6 +19792,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &521415397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 521415394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ad50f81b1d25c441943c37a89ba23f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Animator: {fileID: 521415396}
+  _ActionOnDisable: 0
 --- !u!4 &522654131 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4281800401248331467, guid: e36ab50d03e90c540bd047326878a761,
@@ -51897,6 +51912,9 @@ MonoBehaviour:
   _stickman2: {fileID: 5996776851834185645}
   _stickmanFlag1: {fileID: 1904914657}
   _stickmanFlag2: {fileID: 1817748748}
+  walk: {fileID: -203655887218126122, guid: 452f13f756791b6459fac097ae420d7b, type: 3}
+  "\u0131dle": {fileID: -203655887218126122, guid: d39daf65644bc7b44925d1ead3916169,
+    type: 3}
 --- !u!65 &1496420672
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -73948,7 +73966,7 @@ Animator:
   m_GameObject: {fileID: 5996776851834185645}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: f3559152603355f48908fb9d44ce09b7, type: 3}
-  m_Controller: {fileID: 9100000, guid: 61a7d9e0126c9ef4eaf68e263d3224b8, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -79952,13 +79970,14 @@ GameObject:
   m_Component:
   - component: {fileID: 7305838183420941758}
   - component: {fileID: 858374292476197060}
+  - component: {fileID: 7305838183420941759}
   m_Layer: 0
   m_Name: Stickman2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &6171992620952972836
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -81635,6 +81654,20 @@ Transform:
   m_Father: {fileID: 1920501935}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!114 &7305838183420941759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5996776851834185645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ad50f81b1d25c441943c37a89ba23f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Animator: {fileID: 858374292476197060}
+  _ActionOnDisable: 0
 --- !u!4 &7653728091489851833
 Transform:
   m_ObjectHideFlags: 0

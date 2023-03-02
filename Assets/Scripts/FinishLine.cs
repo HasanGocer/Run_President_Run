@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using Animancer;
 
 public class FinishLine : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class FinishLine : MonoBehaviour
     [SerializeField] GameObject _stickman1Pos;
     [SerializeField] GameObject _stickman2Pos;
     [SerializeField] GameObject _stickman1, _stickman2, _stickmanFlag1, _stickmanFlag2;
+    [SerializeField] AnimationClip walk, ýdle;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -49,6 +51,8 @@ public class FinishLine : MonoBehaviour
         yield return new WaitForSeconds(_finishVoteTime);
         StickmanTime();
         yield return new WaitForSeconds(3);
+        _stickman1.GetComponent<AnimancerComponent>().Play(ýdle, 0.2f);
+        _stickman2.GetComponent<AnimancerComponent>().Play(ýdle, 0.2f);
         FinishSystem.Instance.FinishTime();
     }
 
@@ -83,6 +87,8 @@ public class FinishLine : MonoBehaviour
         _stickman1.SetActive(true);
         _stickman2.SetActive(true);
         _stickman1.transform.DOMove(_stickman1Pos.transform.position, 3);
+        _stickman1.GetComponent<AnimancerComponent>().Play(walk, 0.2f);
+        _stickman2.GetComponent<AnimancerComponent>().Play(walk, 0.2f);
         _stickman2.transform.DOMove(_stickman2Pos.transform.position, 3);
     }
     private void VoteTime(GameObject player)
