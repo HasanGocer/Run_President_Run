@@ -59908,7 +59908,7 @@ MonoBehaviour:
   - objectPrefab: {fileID: 723425660859655051, guid: 2db3208374225e343baeeae7dae9de67,
       type: 3}
     objectParent: {fileID: 0}
-    poolSize: 200
+    poolSize: 250
 --- !u!114 &1725718918
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -84011,7 +84011,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!222 &7785779563522009065
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -85552,7 +85552,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 0
+  m_FillAmount: 0.5
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0

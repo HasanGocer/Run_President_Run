@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class PopulationBar : MonoSingleton<PopulationBar>
 {
-    public int populationCount = 0;
+    public int populationCount = 50;
     [SerializeField] Image _populationBarImage;
     [SerializeField] GameObject _populationBarPanel;
     [SerializeField] int _barSpeed;
