@@ -34,15 +34,15 @@ public class PlayerController : MonoBehaviour
             switch (touch.phase)
             {
                 case UnityEngine.TouchPhase.Began:
-                    if (touch.position.x < 125) xdistance = xBound * -1;
-                    else if (touch.position.x > Camera.main.pixelWidth - 125) xdistance = xBound;
-                    else xdistance = (touch.position.x / (Camera.main.pixelWidth - 250)) * (xBound * 2) - xBound;
+                    if (touch.position.x < 50) xdistance = xBound * -1;
+                    else if (touch.position.x > Camera.main.pixelWidth - 50) xdistance = xBound;
+                    else xdistance = (touch.position.x / (Camera.main.pixelWidth - 100)) * (xBound * 2) - xBound;
                     gameObject.transform.position = new Vector3(xdistance, gameObject.transform.position.y, gameObject.transform.position.z);
                     break;
                 case UnityEngine.TouchPhase.Moved:
-                    if (touch.position.x < 125) xdistance = xBound * -1;
-                    else if (touch.position.x > Camera.main.pixelWidth - 125) xdistance = xBound;
-                    else xdistance = (touch.position.x / (Camera.main.pixelWidth - 250)) * (xBound * 2) - xBound;
+                    if (touch.position.x < 50) xdistance = xBound * -1;
+                    else if (touch.position.x > Camera.main.pixelWidth - 50) xdistance = xBound;
+                    else xdistance = (touch.position.x / (Camera.main.pixelWidth - 100)) * (xBound * 2) - xBound;
                     gameObject.transform.position = new Vector3(xdistance, gameObject.transform.position.y, gameObject.transform.position.z);
                     break;
             }

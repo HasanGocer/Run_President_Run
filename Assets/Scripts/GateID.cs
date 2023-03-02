@@ -59,7 +59,7 @@ public class GateID : MonoBehaviour
         int population = Random.Range(20, 30);
         int price = GateManager.Instance.moneyGatePrice;
 
-        PopulationBar.Instance.BarUpdate(100, PopulationBar.Instance.populationCount, population);
+        PopulationBar.Instance.BarUpdate(population);
         PointText.Instance.CallGreenText(obj, population);
         SoundSystem.Instance.CallGate();
         for (int i = 0; i < population; i++)
@@ -81,7 +81,7 @@ public class GateID : MonoBehaviour
         GameManager.Instance.addedMoney += price;
         PointText.Instance.CallRedText(obj, price);
 
-        PopulationBar.Instance.BarUpdate(100, PopulationBar.Instance.populationCount, population * -1);
+        PopulationBar.Instance.BarUpdate(population * -1);
 
         AnimController.Instance.CallSadAnim();
     }

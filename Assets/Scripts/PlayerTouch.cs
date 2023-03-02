@@ -13,7 +13,7 @@ public class PlayerTouch : MonoBehaviour
     private void BreakerTouch(Collider other)
     {
         other.enabled = false;
-        PopulationBar.Instance.BarUpdate(100, PopulationBar.Instance.populationCount, 5 * -1);
+        PopulationBar.Instance.BarUpdate(5 * -1);
     }
     private void PopulationAdded(GameObject pop)
     {
@@ -23,7 +23,7 @@ public class PlayerTouch : MonoBehaviour
         for (int i = 0; i < 10; i++)
             VoterManager.Instance.VoterAdded();
         pop.SetActive(false);
-        populationBar.BarUpdate(100, populationBar.populationCount, 10);
+        populationBar.BarUpdate(10);
     }
     private void MoneyAdded(GameObject money)
     {
