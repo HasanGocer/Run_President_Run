@@ -9,9 +9,12 @@ public class PopulationBar : MonoSingleton<PopulationBar>
     [SerializeField] Image _populationBarImage;
     [SerializeField] GameObject _populationBarPanel;
     [SerializeField] int _barSpeed;
+
+    [SerializeField] GameObject _leftFlag, _rightFlag;
     public void BarOpen()
     {
         _populationBarPanel.SetActive(true);
+        FlagChange();
     }
     public void BarUpdate(int down)
     {
@@ -30,6 +33,23 @@ public class PopulationBar : MonoSingleton<PopulationBar>
 
         if (down > 0) StartCoroutine(BarUpdateEnum(afterBar, true));
         else StartCoroutine(BarUpdateEnum(afterBar, false));
+    }
+    public void FlagChange()
+    {
+        if (GameManager.Instance.flagStat == GameManager.FlagStat.america)
+        {
+            _leftFlag.transform.GetChild(0).gameObject.SetActive(true);
+            _leftFlag.transform.GetChild(1).gameObject.SetActive(false);
+            _rightFlag.transform.GetChild(0).gameObject.SetActive(false);
+            _rightFlag.transform.GetChild(1).gameObject.SetActive(true);
+        }
+        else
+        {
+            _leftFlag.transform.GetChild(0).gameObject.SetActive(false);
+            _leftFlag.transform.GetChild(1).gameObject.SetActive(true);
+            _rightFlag.transform.GetChild(0).gameObject.SetActive(true);
+            _rightFlag.transform.GetChild(1).gameObject.SetActive(false);
+        }
     }
 
     private IEnumerator BarUpdateEnum(float finish, bool isPlus)

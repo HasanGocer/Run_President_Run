@@ -90,7 +90,6 @@ public class GateID : MonoBehaviour
         GameManager gameManager = GameManager.Instance;
 
         SoundSystem.Instance.CallGate();
-        PopulationBar.Instance.BarOpen();
         if (gateCount == 0)
         {
             gameManager.flagStat = GameManager.FlagStat.america;
@@ -103,5 +102,6 @@ public class GateID : MonoBehaviour
             AnimController.Instance.democraticFlag.SetActive(true);
             AnimController.Instance.republicFlag.SetActive(false);
         }
+        PopulationBar.Instance.BarOpen();
     }
 }
