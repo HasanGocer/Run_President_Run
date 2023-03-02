@@ -14,7 +14,7 @@ public class FinishSystem : MonoSingleton<FinishSystem>
         GameManager gameManager = GameManager.Instance;
         Buttons buttons = Buttons.Instance;
         MoneySystem moneySystem = MoneySystem.Instance;
-        if (PopulationBar.Instance.populationCount >= 50)
+        if (PopulationBar.Instance.populationCount > 50)
         {
             SoundSystem.Instance.CallFinishWin();
             StartCoroutine(BarSystem.Instance.BarImageFillAmountIenum());

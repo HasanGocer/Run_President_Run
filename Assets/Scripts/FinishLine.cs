@@ -47,6 +47,7 @@ public class FinishLine : MonoBehaviour
     {
         Camera.main.gameObject.GetComponent<CamMoveControl>().enabled = false;
         Camera.main.gameObject.transform.DOMove(finishCamPos.transform.position, 1);
+        Camera.main.gameObject.transform.DORotateQuaternion(finishCamPos.transform.rotation, 1);
         player.transform.position = playerPos.transform.position;
         AnimController.Instance.CallIdleAnim();
         player.transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
