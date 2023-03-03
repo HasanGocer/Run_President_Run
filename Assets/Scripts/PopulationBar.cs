@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class PopulationBar : MonoSingleton<PopulationBar>
 {
@@ -11,6 +12,8 @@ public class PopulationBar : MonoSingleton<PopulationBar>
     [SerializeField] int _barSpeed;
 
     [SerializeField] GameObject _leftFlag, _rightFlag;
+
+    [SerializeField] TMP_Text _popText;
     public void BarOpen()
     {
         _populationBarPanel.SetActive(true);
@@ -31,8 +34,8 @@ public class PopulationBar : MonoSingleton<PopulationBar>
             populationCount = 100;
         }
 
-        if (down > 0) StartCoroutine(BarUpdateEnum(afterBar, true));
-        else StartCoroutine(BarUpdateEnum(afterBar, false));
+        if (down > 0) StartCoroutine(BarUpdateEnum(true));
+        else StartCoroutine(BarUpdateEnum(false));
     }
     public void FlagChange()
     {
@@ -52,24 +55,29 @@ public class PopulationBar : MonoSingleton<PopulationBar>
         }
     }
 
-    private IEnumerator BarUpdateEnum(float finish, bool isPlus)
+    private IEnumerator BarUpdateEnum(bool isPlus)
     {
         float lerpCount = 0;
         int lerpintCount = 0;
-
+        float textPlus = ((float)Camera.main.pixelWidth - (float)_popText.gameObject.transform.parent.transform.position.x) / 2;
+        textPlus += 50;
+        print(textPlus);
         while (true)
         {
             lerpintCount++;
             if (isPlus) lerpCount += Time.deltaTime * _barSpeed * 2;
             else lerpCount += Time.deltaTime * _barSpeed;
-            _populationBarImage.fillAmount = Mathf.Lerp(_populationBarImage.fillAmount, finish, Time.deltaTime);
+            _populationBarImage.fillAmount = Mathf.Lerp(_populationBarImage.fillAmount, (float)populationCount / 100, Time.deltaTime);
+            _popText.text = ((int)(_populationBarImage.fillAmount * 100)).ToString();
+            _popText.transform.position = new Vector2(Mathf.Lerp(_popText.transform.position.x, textPlus + (float)populationCount * ((float)_popText.gameObject.transform.parent.transform.position.x / (float)100), lerpCount), _popText.transform.position.y);
             yield return new WaitForSeconds(Time.deltaTime);
+            _popText.text = ((int)(_populationBarImage.fillAmount * 100)).ToString();
             if (lerpintCount == 50)
             {
-                _populationBarImage.fillAmount = finish;
+                _populationBarImage.fillAmount = (float)populationCount / 100;
                 break;
             }
-            if (_populationBarImage.fillAmount == finish) break;
+            if (_populationBarImage.fillAmount == populationCount / 100) break;
         }
     }
 }

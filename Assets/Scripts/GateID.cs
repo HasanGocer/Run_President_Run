@@ -79,7 +79,7 @@ public class GateID : MonoBehaviour
         SoundSystem.Instance.CallGate();
         ParticalManager.Instance.CallMoneyGatePartical(obj);
         GameManager.Instance.addedMoney += price;
-        PointText.Instance.CallRedText(obj, price);
+        PointText.Instance.CallRedText(obj, population);
 
         PopulationBar.Instance.BarUpdate(population * -1);
 

@@ -13,12 +13,14 @@ public class PlayerTouch : MonoBehaviour
     private void BreakerTouch(Collider other)
     {
         other.enabled = false;
+        PointText.Instance.CallRedText(gameObject, -5);
         PopulationBar.Instance.BarUpdate(5 * -1);
     }
     private void PopulationAdded(GameObject pop)
     {
         PopulationBar populationBar = PopulationBar.Instance;
 
+        PointText.Instance.CallRedText(gameObject, 3);
         ParticalManager.Instance.CallMoneyGatePartical(gameObject);
         for (int i = 0; i < 10; i++)
             VoterManager.Instance.VoterAdded();
@@ -30,6 +32,7 @@ public class PlayerTouch : MonoBehaviour
         money.SetActive(false);
         SoundSystem.Instance.CallCoin();
         PopulationBar.Instance.BarUpdate(3 * -1);
+        PointText.Instance.CallRedText(gameObject, -3);
         GameManager.Instance.addedMoney += GateManager.Instance.moneyFieldPrice;
     }
 }

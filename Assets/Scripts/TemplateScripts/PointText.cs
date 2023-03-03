@@ -28,7 +28,7 @@ public class PointText : MonoSingleton<PointText>
     {
         GameObject obj = ObjectPool.Instance.GetPooledObject(_OPRedTextCount);
 
-        obj.GetComponent<DamageNumberMesh>().number = count;
+        obj.GetComponent<DamageNumberMesh>().leftText = "% " + count;
         obj.transform.position = Pos.transform.position;
         yield return new WaitForSeconds(_textMoveTime);
         ObjectPool.Instance.AddObject(_OPRedTextCount, obj);
@@ -37,7 +37,7 @@ public class PointText : MonoSingleton<PointText>
     {
         GameObject obj = ObjectPool.Instance.GetPooledObject(_OPGreenTextCount);
 
-        obj.GetComponent<DamageNumberMesh>().number = count;
+        obj.GetComponent<DamageNumberMesh>().leftText = "% " + count;
         obj.transform.position = Pos.transform.position;
         yield return new WaitForSeconds(_textMoveTime);
         ObjectPool.Instance.AddObject(_OPGreenTextCount, obj);
