@@ -12,7 +12,6 @@ public class PlayerTouch : MonoBehaviour
     }
     private void BreakerTouch(Collider other)
     {
-        other.enabled = false;
         PointText.Instance.CallRedText(gameObject, 5);
         PopulationBar.Instance.BarUpdate(5 * -1);
     }
