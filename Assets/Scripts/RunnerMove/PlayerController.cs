@@ -61,7 +61,9 @@ public class PlayerController : MonoBehaviour
     }*/
     private void AutoMoveForward()
     {//ileri
-        transform.position = Vector3.Lerp(transform.position, transform.position + Vector3.forward * Verticalspeed * Time.deltaTime, Time.deltaTime);
+        Vector3 direction = (Vector3.forward).normalized;
+        transform.position += direction * Verticalspeed * Time.deltaTime;
+        //transform.position = Vector3.Lerp(transform.position, transform.position + Vector3.forward * Verticalspeed * Time.deltaTime, Time.deltaTime / 10);
     }
     private void BoundaryCheck()
     {

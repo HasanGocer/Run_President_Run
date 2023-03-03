@@ -60,7 +60,7 @@ public class PopulationBar : MonoSingleton<PopulationBar>
         float lerpCount = 0;
         int lerpintCount = 0;
         float textPlus = ((float)Camera.main.pixelWidth - (float)_popText.gameObject.transform.parent.transform.position.x) / 2;
-        textPlus += 50;
+        textPlus += 45;
         print(textPlus);
         while (true)
         {
@@ -71,7 +71,7 @@ public class PopulationBar : MonoSingleton<PopulationBar>
             _popText.text = ((int)(_populationBarImage.fillAmount * 100)).ToString();
             _rivalPopText.text = ((int)((1 - _populationBarImage.fillAmount) * 100)).ToString();
             _popText.transform.position = new Vector2(Mathf.Lerp(_popText.transform.position.x, textPlus + (float)populationCount * ((float)_popText.gameObject.transform.parent.transform.position.x / (float)100), lerpCount), _popText.transform.position.y);
-            _rivalPopText.transform.position = new Vector2(Mathf.Lerp(_popText.transform.position.x, textPlus + 130 + (float)populationCount * ((float)_popText.gameObject.transform.parent.transform.position.x / (float)100), lerpCount), _rivalPopText.transform.position.y);
+            _rivalPopText.transform.position = new Vector2(Mathf.Lerp(_popText.transform.position.x, textPlus + 120 + (float)populationCount * ((float)_popText.gameObject.transform.parent.transform.position.x / (float)100), lerpCount), _rivalPopText.transform.position.y);
             yield return new WaitForSeconds(Time.deltaTime);
             _popText.text = ((int)(_populationBarImage.fillAmount * 100)).ToString();
             _rivalPopText.text = ((int)((1 - _populationBarImage.fillAmount) * 100)).ToString();

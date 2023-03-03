@@ -20,7 +20,7 @@ public class PlayerTouch : MonoBehaviour
     {
         PopulationBar populationBar = PopulationBar.Instance;
 
-        PointText.Instance.CallRedText(gameObject, 3);
+        PointText.Instance.CallGreenText(gameObject, 3);
         ParticalManager.Instance.CallMoneyGatePartical(gameObject);
         for (int i = 0; i < 10; i++)
             VoterManager.Instance.VoterAdded();
