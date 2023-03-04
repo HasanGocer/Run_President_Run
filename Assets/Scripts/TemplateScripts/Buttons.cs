@@ -48,6 +48,7 @@ public class Buttons : MonoSingleton<Buttons>
     [SerializeField] Image _barLerp;
     [SerializeField] int _lerpFactor;
     [SerializeField] int _startSceneCount;
+    [SerializeField] List<GameObject> _WaitImage = new List<GameObject>();
 
     private void Start()
     {
@@ -61,6 +62,7 @@ public class Buttons : MonoSingleton<Buttons>
         GateManager.Instance.GatePlacement();
         TaxManager.Instance.GatePlacement();
 
+        _WaitImage[Random.Range(0, _WaitImage.Count)].SetActive(true);
         _loadingPanel.SetActive(true);
         _globalPanel.SetActive(false);
         startPanel.SetActive(false);

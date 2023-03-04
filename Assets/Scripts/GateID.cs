@@ -57,7 +57,6 @@ public class GateID : MonoBehaviour
     private void PopulationSelection(GameObject obj)
     {
         int population = Random.Range(5, 15);
-        int price = GateManager.Instance.moneyGatePrice;
 
         PopulationBar.Instance.BarUpdate(population);
         PointText.Instance.CallGreenText(obj, population);
@@ -65,7 +64,7 @@ public class GateID : MonoBehaviour
         for (int i = 0; i < population; i++)
             VoterManager.Instance.VoterAdded();
 
-        GameManager.Instance.addedMoney -= price;
+        GameManager.Instance.addedMoney += Random.Range(10, 50);
         if (GameManager.Instance.addedMoney < 0) GameManager.Instance.addedMoney = 0;
         AnimController.Instance.CallDanceAnim();
     }

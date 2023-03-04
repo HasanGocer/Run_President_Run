@@ -58,29 +58,27 @@ public class PopulationBar : MonoSingleton<PopulationBar>
     private IEnumerator BarUpdateEnum(bool isPlus)
     {
         float lerpCount = 0;
-        int lerpintCount = 0;
         float textPlus = ((float)Camera.main.pixelWidth - (float)_popText.gameObject.transform.parent.transform.position.x) / 2;
-        textPlus += 45;
+        textPlus -= 40;
         print(textPlus);
         while (true)
         {
-            lerpintCount++;
-            if (isPlus) lerpCount += Time.deltaTime * _barSpeed * 2;
-            else lerpCount += Time.deltaTime * _barSpeed;
-            _populationBarImage.fillAmount = Mathf.Lerp(_populationBarImage.fillAmount, (float)populationCount / 100, Time.deltaTime);
+            lerpCount += Time.deltaTime * _barSpeed;
+
+            _populationBarImage.fillAmount = Mathf.Lerp(_populationBarImage.fillAmount, (float)populationCount / 100, lerpCount);
             _popText.text = ((int)(_populationBarImage.fillAmount * 100)).ToString();
             _rivalPopText.text = ((int)((1 - _populationBarImage.fillAmount) * 100)).ToString();
             _popText.transform.position = new Vector2(Mathf.Lerp(_popText.transform.position.x, textPlus + (float)populationCount * ((float)_popText.gameObject.transform.parent.transform.position.x / (float)100), lerpCount), _popText.transform.position.y);
-            _rivalPopText.transform.position = new Vector2(Mathf.Lerp(_popText.transform.position.x, textPlus + 120 + (float)populationCount * ((float)_popText.gameObject.transform.parent.transform.position.x / (float)100), lerpCount), _rivalPopText.transform.position.y);
+            _rivalPopText.transform.position = new Vector2(Mathf.Lerp(_rivalPopText.transform.position.x, textPlus + 80 + (float)populationCount * ((float)_rivalPopText.gameObject.transform.parent.transform.position.x / (float)100), lerpCount), _rivalPopText.transform.position.y);
             yield return new WaitForSeconds(Time.deltaTime);
             _popText.text = ((int)(_populationBarImage.fillAmount * 100)).ToString();
             _rivalPopText.text = ((int)((1 - _populationBarImage.fillAmount) * 100)).ToString();
-            if (lerpintCount == 50)
+            if (_populationBarImage.fillAmount == populationCount / 100)
             {
-                _populationBarImage.fillAmount = (float)populationCount / 100;
+                _popText.transform.position = new Vector2(textPlus + (float)populationCount * ((float)_popText.gameObject.transform.parent.transform.position.x / (float)100), _popText.transform.position.y);
+                _rivalPopText.transform.position = new Vector2(textPlus + 80 + (float)populationCount * ((float)_rivalPopText.gameObject.transform.parent.transform.position.x / (float)100), _rivalPopText.transform.position.y);
                 break;
             }
-            if (_populationBarImage.fillAmount == populationCount / 100) break;
         }
     }
 }

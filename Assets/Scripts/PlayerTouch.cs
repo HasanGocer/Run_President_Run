@@ -20,8 +20,7 @@ public class PlayerTouch : MonoBehaviour
         PopulationBar populationBar = PopulationBar.Instance;
 
         PointText.Instance.CallGreenText(gameObject, 3);
-        ParticalManager.Instance.CallMoneyGatePartical(gameObject);
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 5; i++)
             VoterManager.Instance.VoterAdded();
         pop.SetActive(false);
         populationBar.BarUpdate(3);
@@ -31,6 +30,7 @@ public class PlayerTouch : MonoBehaviour
         money.SetActive(false);
         SoundSystem.Instance.CallCoin();
         PopulationBar.Instance.BarUpdate(3 * -1);
+        ParticalManager.Instance.CallMoneyGatePartical(gameObject);
         PointText.Instance.CallRedText(gameObject, 3);
         GameManager.Instance.addedMoney += GateManager.Instance.moneyFieldPrice;
     }

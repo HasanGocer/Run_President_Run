@@ -6,7 +6,6 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     public float Verticalspeed = 1f, horizontalSpeed;
-    private Vector3 movement;
     public float xBound = 4.3f;
 
 
