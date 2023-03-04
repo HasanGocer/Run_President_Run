@@ -72,6 +72,7 @@ public class GameManager : MonoSingleton<GameManager>
             FactorPlacementWrite(ItemData.Instance.factor);
             MarketPlacementWrite(MarketSystem.Instance.FieldsBools);
         }
+        MoonSDK.TrackLevelEvents(MoonSDK.LevelEvents.Start, level);
     }
 
     public void FactorPlacementWrite(ItemData.Field factor)
