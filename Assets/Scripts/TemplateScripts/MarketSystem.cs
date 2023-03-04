@@ -75,10 +75,10 @@ public class MarketSystem : MonoSingleton<MarketSystem>
             _buttonText.text = "Equipped";
         }
         else
-            if (GameManager.Instance.money >= _stickmanPrices[stickmanUsedCount])
+            if (GameManager.Instance.money >= _stickmanPrices[_stickmanCount])
         {
-            MoneySystem.Instance.MoneyTextRevork(-1 * _stickmanPrices[stickmanUsedCount]);
-            FieldsBools.MarketFieldBuyed[stickmanUsedCount] = true;
+            MoneySystem.Instance.MoneyTextRevork(-1 * _stickmanPrices[_stickmanCount]);
+            FieldsBools.MarketFieldBuyed[_stickmanCount] = true;
             GameManager.Instance.MarketPlacementWrite(FieldsBools);
             _buttonText.text = "Use";
         }
